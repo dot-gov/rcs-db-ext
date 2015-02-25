@@ -7,6 +7,13 @@ External libraries, huge binaries, all the big, heavy things on which _rcs_ depe
 * Java
 * Pyhton
 * Ruby
+* nsis
+
+
+## Add --force the Ruby folder!
+Some folders under Ruby contains `.gitignore` files. To avoid losing files when adding
+use the command `git add --force`, this will add _all_ the files, even the ones ignored by
+any `.gitignore`.
 
 
 ## Tools/Scripts
