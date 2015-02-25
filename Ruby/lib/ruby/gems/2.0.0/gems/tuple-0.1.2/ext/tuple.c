@@ -1,5 +1,9 @@
 #include "ruby.h"
-#include <netinet/in.h>
+//#include <netinet/in.h>
+#include <stdint.h>
+
+typedef uint8_t u_int8_t;
+typedef uint32_t u_int32_t;
 
 VALUE mTuple;
 VALUE rb_cDate;

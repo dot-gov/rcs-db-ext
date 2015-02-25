@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Justin Balthrop", "Ash Moran"]
-  s.date = "2011-08-24"
+  s.date = "2013-12-19"
   s.description = "Fast, binary-sortable serialization for arrays of simple Ruby types."
   s.email = "code@justinbalthrop.com"
   s.extensions = ["ext/extconf.rb"]

@@ -11,12 +11,12 @@ ECHO = $(ECHO1:0=@echo)
 #### Start of system configuration section. ####
 
 srcdir = .
-topdir = /C/RCS/Ruby/include/ruby-2.0.0
+topdir = /C/RCS/rcs-db-ext/Ruby/include/ruby-2.0.0
 hdrdir = $(topdir)
-arch_hdrdir = C:/RCS/Ruby/include/ruby-2.0.0/i386-mingw32
+arch_hdrdir = C:/RCS/rcs-db-ext/Ruby/include/ruby-2.0.0/i386-mingw32
 PATH_SEPARATOR = :
 VPATH = $(srcdir):$(arch_hdrdir)/ruby:$(hdrdir)/ruby
-prefix = /C/RCS/Ruby
+prefix = /C/RCS/rcs-db-ext/Ruby
 rubysitearchprefix = $(rubylibprefix)/$(sitearch)
 rubyarchprefix = $(rubylibprefix)/$(arch)
 rubylibprefix = $(libdir)/$(RUBY_BASE_NAME)
@@ -30,8 +30,8 @@ rubyhdrdir = $(includedir)/$(RUBY_VERSION_NAME)
 vendorarchdir = $(vendorlibdir)/$(sitearch)
 vendorlibdir = $(vendordir)/$(ruby_version)
 vendordir = $(rubylibprefix)/vendor_ruby
-sitearchdir = ./.gem.20141021-1008-4zdi8q
-sitelibdir = ./.gem.20141021-1008-4zdi8q
+sitearchdir = ./.gem.20150225-3352-1u6v4f1
+sitelibdir = ./.gem.20150225-3352-1u6v4f1
 sitedir = $(rubylibprefix)/site_ruby
 rubyarchdir = $(rubylibdir)/$(arch)
 rubylibdir = $(rubylibprefix)/$(ruby_version)
