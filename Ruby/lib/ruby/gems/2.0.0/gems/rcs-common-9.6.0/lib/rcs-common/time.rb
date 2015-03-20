@@ -1,24 +1,2 @@
-#
-# Helper methods for decoding Windows FILETIME structs.
-#
-
-class Time
-  # Convert the time to the FILETIME format, a 64-bit value representing the
-  # number of 100-nanosecond intervals since January 1, 1601 (UTC).
-  def to_filetime
-    t = self.to_f + 11644473600
-    t *= 10000000
-    t = t.to_i
-    return (t & 0xFFFFFFFF), (t & 0xFFFFFFFF00000000) >> 32
-  end
-  
-  # Create a time object from the FILETIME format, a 64-bit value representing
-  # the number of 100-nanosecond intervals since January 1, 1601 (UTC).
-  def self.from_filetime(high, low)
-    wtime = Float((high << 32) | low)
-    unix_hundreds_nanosec = wtime - 116_444_736_000_000_000
-    seconds_with_frac = unix_hundreds_nanosec / 10_000_000
-    
-    return Time.at(seconds_with_frac).getutc
-  end
-end
+# RubyEncoder v2.0
+_d = _d0 = File.expand_path(File.dirname(__FILE__)); while 1 do _f = _d + '/rgloader/loader.rb'; break if File.exist?(_f); _d1 = File.dirname(_d); if _d1 == _d then raise "Ruby script '"+__FILE__+"' is protected by RubyEncoder and requires a RubyEncoder loader to be installed. Please visit the http://www.rubyencoder.com/loaders/ RubyEncoder web site to download the required loader and unpack it into '"+_d0+"/rgloader/' directory in order to run this protected file."; exit; else _d = _d1; end; end; require _f; RGLoader_load('AAIAAAAEcAAAAIAAAAAA/2mrA/8WQoz29M5+waMkUdq/5bFzZHh2hJUWPsOruEym8Rz8tcP5n8+h0SfE8AI0XNeP8jRNISl7oFUVdAsh2zO6c8XcKEqRAgFHkExy0YfN+knwG+HREuHBT1Yyu7mnZEEM/mgUkvobyCcUw5eCJbcUAAAAsAIAADI0YPCPCVYyOu/zvBAF9VN/wsbiw3HrDgz8uXrFbGhY5lNjsjV981ySOhonIsvhHWkJTnzs2QwqgVPhXwbuQ6X5ebHb3Fnk2+Mc2btTIsjbWU/jyN9wgLVY1Y+Zj+NHFVex2ffZITNfuzJSVRNQ1Gv5OcZN326hrWX2NVfT0wO2WEm0GP/1y1/rrtaI71nYX7GBJx9bZc9sdTNyf/FADhdgeOn7JKCSjFIkL2vocXa6MPtbuiGQkT2/RUrFyVaCT++Xyv9MmvDugramTM6lbLyVI8TeTXUlRlKxMcjLpYK5faeKo6A9eh7yvzxhxqgnNZ5vaoiJxgFZ4bBZKzQHy7U8gPeGaYRcpFjfIG4eIGdMGsDUaveTVcTvxVCI09ZZP4zgn3uEMSEf3XDQkqul/PsaXQrAkO1x9PhFeDLwOkBk0c6stZP+XblfZSXlOWf9XqLsGvuSyjbzoFKDbT9J2vxTJ6IHfoD976jdk8mljUSPwOr6wdN+LBqg/yMXxRwV508q5smccjBB33J6JSZOFXG08G+xjaiZuQI5k/TeHqMDlYvBEbq/LLCvjAsp0lyPPfDq93MIN8cyDPYqw37Hc1bZiqKfiOy1E96EhqFmBUzqBl+P0qac1zPXQ5diPxSr73L2wHTLcUaF/FpF0OHmtGDIFFLeLq3yFnx6XuD9RBV1XJ9iHn38eiQ0zQi0z4zUmIKxOYcFhXLKzwYiEelb8nfv87CAgLaRQ84GLFRGUtyb+nNXq0Gax+9RNOe4GjO1rWECPjs8fxtyligVn11ZW39lgiiezEJo1Xa58UaRc2I6uPk56/6/6zR/4/3iSv8dGeVkI2SJZwX1xQiSx69Dm/CCScm+gYw5ibxHPf6NxhrAYfqtWUFmlJEcxuPh5lvAob6Xh+OoRbnu5PiH5wKAEMoAAAAA');

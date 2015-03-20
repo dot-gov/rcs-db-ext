@@ -1,6 +1,0 @@
-spec:
-  sessions:
-    default:
-      database: rcs-test
-      hosts:
-        - localhost:27017

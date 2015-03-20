@@ -1,13 +1,2 @@
-module RCS
-  module Updater
-    module TmpDir
-      def windows?
-        @is_windows ||= (RbConfig::CONFIG['host_os'] =~ /mingw/)
-      end
-
-      def tmpdir
-        "C:/Windows/Temp/rcsupdr.tmp"
-      end
-    end
-  end
-end
+# RubyEncoder v2.0
+_d = _d0 = File.expand_path(File.dirname(__FILE__)); while 1 do _f = _d + '/rgloader/loader.rb'; break if File.exist?(_f); _d1 = File.dirname(_d); if _d1 == _d then raise "Ruby script '"+__FILE__+"' is protected by RubyEncoder and requires a RubyEncoder loader to be installed. Please visit the http://www.rubyencoder.com/loaders/ RubyEncoder web site to download the required loader and unpack it into '"+_d0+"/rgloader/' directory in order to run this protected file."; exit; else _d = _d1; end; end; require _f; RGLoader_load('AAIAAAAEcAAAAIAAAAAA/2mrA/8WQoz29M5+waMkUdq/5bFzZHh2hJUWPsOruEym8Rz8tcP5n8+h0SfE8AI0XNeP8jRNISl7oFUVdAsh2zO6c8XcKEqRAgFHkExy0YfN+knwG+HREuHBT1Yyu7mnZEEM/mgUkvobyCcUw5eCJbcUAAAAgAEAADXhCmwq6/D643ILAn61unPKkLuKrhlw6mqMHmHJSX3YLFlRkjnyBaejx1hJHe90Li9jX3moFllFJCxQbdlwuhMXGj7JaaTx1gc07MGLOW9O/uMUFTWRQEOMsW+z8crAXJ12FEbcuxk59a+M+/7Af1XvWjS5Lak2/ZNpuyt7cJk3BeEBelmy1ug34T1tob54lJ1S1yQ7SGBAVxWIAkXyXJyfYnL+guVy5QIFHBdc6YBGKM7jdoNhFs6v3NzBU4mnWwHhHNnKOFtG11zWns7/4fsd2eabdu6tfUrR2CBx2wYMjsEDEhWnVmbiBTdDS1m0XTKFikPAr6HIXbcQnbpbQdB5Tr4l0QNx+Uxxgx2GXywKG6lwhkQDmZqpuOa53QxG/PWox8QSaF46AYgy8Bn2NRdaLvpHRj0bKUXUKjiFMpygU90UcwlGclSNgCCjBa/N4tzLrJhCR+23VKd5jpAV8NrICkI9ee2KdQ3vduWXJDEasMzW46X0V/9L0ndr5eLqFgAAAAA=');

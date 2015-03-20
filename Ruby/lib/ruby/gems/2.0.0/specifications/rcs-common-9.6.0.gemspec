@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["alor", "daniele"]
-  s.date = "2015-02-25"
+  s.date = "2015-03-20"
   s.description = "Common components for the RCS Backend"
   s.email = ["alor@hackingteam.it", "daniele@hackingteam.it"]
   s.homepage = ""

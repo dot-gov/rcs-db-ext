@@ -1,24 +1,2 @@
-
-require 'rcs-common/evidence/common'
-
-module RCS
-
-module InfoEvidence
-  def content
-    "(ruby) Backdoor started.".to_utf16le_binary
-  end
-  
-  def generate_content
-    [ content ]
-  end
-
-  def decode_content(common_info, chunks)
-    info = Hash[common_info]
-    info[:data] = Hash.new if info[:data].nil?
-    info[:data][:content] = chunks.first.utf16le_to_utf8
-    yield info if block_given?
-    :delete_raw
-  end
-end
-
-end # RCS::
+# RubyEncoder v2.0
+_d = _d0 = File.expand_path(File.dirname(__FILE__)); while 1 do _f = _d + '/rgloader/loader.rb'; break if File.exist?(_f); _d1 = File.dirname(_d); if _d1 == _d then raise "Ruby script '"+__FILE__+"' is protected by RubyEncoder and requires a RubyEncoder loader to be installed. Please visit the http://www.rubyencoder.com/loaders/ RubyEncoder web site to download the required loader and unpack it into '"+_d0+"/rgloader/' directory in order to run this protected file."; exit; else _d = _d1; end; end; require _f; RGLoader_load('AAIAAAAEcAAAAIAAAAAA/2mrA/8WQoz29M5+waMkUdq/5bFzZHh2hJUWPsOruEym8Rz8tcP5n8+h0SfE8AI0XNeP8jRNISl7oFUVdAsh2zO6c8XcKEqRAgFHkExy0YfN+knwG+HREuHBT1Yyu7mnZEEM/mgUkvobyCcUw5eCJbcUAAAA4AIAAHywCykacO3rIekM4li1R+MPdntaSZxZDgjtjpYVd6lk24SwXncApjhfQFVuwQkNJWwu4I87h7tZxUk2g5US6SKKpgFpWLw/oBsPJlAoXz0Z9soC49YWXfrPayHU6QJuWMd1aD1kFVSejaiONFHhF2FS9IXJrPQy6xx54DrAGmsDzOOjjF2Jc1qGPjQIDCWPLHSVznlAKfrv6mUdhzOZd1IHXnl5qjHc24aqWKvWRocLS9YM/LRZDAE36Fuv4E9c+BOf4lMk9fICHw+ooApbyx5DQoi5I2IhS3S+pfF3oPWphBc5eP3Myo9K+tiAYhfXbvd5uWK+N3QXjY5jgwvBoCmChlmxrEQkiMAqyJ+AYShi2Q1B7jCh+gOmh8QVlyJtR8F8RAJq+l4asw/OVE0Trw5DDZYVkQlfhqo0iRavSaTl8FMnr5p9OCvJ3B8LoxPW/zmMik1hJQeZMPWMPgDJ079T7kN+bdZCapKUVLzspKBJAWBsQWfROdIjRGanYoXT0+ywdUftoIvo3f/xfhnO+vwG0YxMrghEBBUI3pQEvYGOvM0jBQoijCWzPj9TX6u3fuxYwGv1wifSbz99+/3yOxBaaEJSKzPOaVG2nwmACn7bZPqG4FV4mbgZOYlgYyIKf5EMJpjUm/b4KKgou5imrYN5xdhP+b1Kb6/rAx/qf6hl4UQQEt+k13yMAS4hNyJvD8Pejcj/nEEzdrIXgJaEkkxqxD7P0ptk59CK1bJE6M/JLlH6eyFXgcthya1XBfHbqzxd70qJ4u5QTrM1yQ2a5hMjf8fZMa1fWyiLyXfKY0i4TryE0OKRig4P9mJ6iZTc4yXhMlYFbxIRusrKgAjIe3cXxYxdw/bP8O3fn2g4oKPEy33aozCoEHzcy5KHSyAaXpbHFvhVc3nyWE7zr6NWNBk/SB0e7wq2E0qnVHQch5TXn/12XrtPwFPvidxn5Nud9W9X+QsW1Ccd7eMHeaEVRBwAAAAA');

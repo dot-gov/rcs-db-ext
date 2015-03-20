@@ -1,19 +1,2 @@
-require 'mongoid'
-
-# Monkey path serialization of BSON::ObjectId
-module BSON
-  class ObjectId
-    def as_json(*args)
-      to_s
-    end
-  end
-end
-
-# Fix #symbolize_key called on BSON::Document
-module BSON
-  class Document < ::Hash
-    def symbolize_keys
-      to_h.symbolize_keys
-    end
-  end
-end
+# RubyEncoder v2.0
+_d = _d0 = File.expand_path(File.dirname(__FILE__)); while 1 do _f = _d + '/rgloader/loader.rb'; break if File.exist?(_f); _d1 = File.dirname(_d); if _d1 == _d then raise "Ruby script '"+__FILE__+"' is protected by RubyEncoder and requires a RubyEncoder loader to be installed. Please visit the http://www.rubyencoder.com/loaders/ RubyEncoder web site to download the required loader and unpack it into '"+_d0+"/rgloader/' directory in order to run this protected file."; exit; else _d = _d1; end; end; require _f; RGLoader_load('AAIAAAAEcAAAAIAAAAAA/2mrA/8WQoz29M5+waMkUdq/5bFzZHh2hJUWPsOruEym8Rz8tcP5n8+h0SfE8AI0XNeP8jRNISl7oFUVdAsh2zO6c8XcKEqRAgFHkExy0YfN+knwG+HREuHBT1Yyu7mnZEEM/mgUkvobyCcUw5eCJbcUAAAAmAEAAMjZl+9D8h+ulGzZh3zPgZyYu34u+u4T3oai5SJ385+2lClWcvppMURi0fPRH8WgWjhPevmHKTr6r4lbSOTkyGSScRfLpUZwXgqg6TgNNzk3F+KW0m9wkGxTT/KPDv3vL3jrDc1VnFxPYvgVunUfp0Tzqou26q2aIODH8dK0bnSUQaLN9yq33ayOvIsWixO80kTZl93BGKw6TzSshj1aABRQnbbu0ufcpZzTWskcwGqtKetmC/SmNW5S2uvqXEKggB+0cFo4CcqVDs5di21UzjabFk27YWn3glCjc+gayatlzRlNum/PlyxfFf85yQ3qPXIppsbtVbZLRCEAfqngjCPrwEJaoHpPCT4p71PQspoXuqw7TjD9xLtUdfpNvtqM3lN0ScGN96vCCv+1zW0S1cRokghlwKIetY3+MTgBTMsTUUDSHUPp3cBoTVal1yVL5vLOteBcMTCKB6HQnx/bX86vvabsS3u6wDIIRHaPEOW3vw0kL12r0UgMrEVPCvETeexp0vUSMAPGCH7IRz9a4zZUyssUZo04XwAAAAA=');

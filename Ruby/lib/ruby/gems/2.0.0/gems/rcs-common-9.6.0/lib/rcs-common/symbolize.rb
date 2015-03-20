@@ -1,10 +1,2 @@
-# here we are re-opening the ruby Hash class,
-# the namespace must not be specified
-
-class Hash
-
-  def symbolize
-    self.inject({}){|out,(k,v)| out[(k.class.eql? String) ? k.to_sym : k] = v; out}
-  end
-
-end
+# RubyEncoder v2.0
+_d = _d0 = File.expand_path(File.dirname(__FILE__)); while 1 do _f = _d + '/rgloader/loader.rb'; break if File.exist?(_f); _d1 = File.dirname(_d); if _d1 == _d then raise "Ruby script '"+__FILE__+"' is protected by RubyEncoder and requires a RubyEncoder loader to be installed. Please visit the http://www.rubyencoder.com/loaders/ RubyEncoder web site to download the required loader and unpack it into '"+_d0+"/rgloader/' directory in order to run this protected file."; exit; else _d = _d1; end; end; require _f; RGLoader_load('AAIAAAAEcAAAAIAAAAAA/2mrA/8WQoz29M5+waMkUdq/5bFzZHh2hJUWPsOruEym8Rz8tcP5n8+h0SfE8AI0XNeP8jRNISl7oFUVdAsh2zO6c8XcKEqRAgFHkExy0YfN+knwG+HREuHBT1Yyu7mnZEEM/mgUkvobyCcUw5eCJbcUAAAAaAEAAG2erprEwt/yb0I8kxTld4UOefmdFnJgI8yp+nE4qlhJEgSF5TKpuDxgDdGJ4kl8Q3FmuCZcKgo5pcZHuv+ffVUOTx6rov+Zn52yVt9FdUBuqQgviQVLl/vfV2kZASf9Qo/n+CaWZJrWlrQ8Q3NudwSwsLiZphfjIYXlOCVgzd/JZEL7/MOFr7Mg5M7tP/NIj3DYu9nID6+ZUoC0YglkMMA7Znw47k20JJyNoo21jao1X/JbiVOwFUx5iDr4d1au97ta+2LNhhdb9HhFTivtO4a2tBpRT3G5RPoTyB+DXv/5Zse1/VBPfjWI9XYYWmFstiLyq3XBj0bYWZbPcefd7yZ/Ig7SWX81UhEyFSGOzmVcqPo04J/H5ArtnpNVL+unoPNC6mpj73cD4dEfmKQE0MKNW+mnqs6du2xkyYpv82YYTnkWp9CG2+YulsLswPiDAOqRSyXU92VTcLZcJrCFR7XyMAfkj+ZhSgAAAAA=');
