@@ -53,9 +53,16 @@ unless skip_recipes
     # "http://packages.openknapsack.org/libffi/libffi-3.0.10-x86-windows.tar.lzma"    => "eb7d567287639d6f1f38b5725ad2a0a0",
     "http://packages.openknapsack.org/zlib/zlib-1.2.6-x86-windows.tar.lzma"         => "86e7371b6e256c7be4c990c86cd16ae6",
     "http://packages.openknapsack.org/openssl/openssl-1.0.0g-x86-windows.tar.lzma"  => "a3b1c963165670f08e8fe704e14c91ed",
+    "knapsack-sqlite-3.7.15.2.zip" => nil
   }.each do |package_url, package_md5|
 
     raise("Invalid DevKit path - #{devkit_mingw_path}") unless Dir.exists?(devkit_path)
+
+    if package_url !~ /^http/i
+      command = "\"#{sevenzip}\" x \"#{package_url}\" -o\"#{devkit_mingw_path}\" -y"
+      system(command)
+      next
+    end
 
     name = File.basename(package_url)
     path = "#{Dir.tmpdir}\\#{name}"

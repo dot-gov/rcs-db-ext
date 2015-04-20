@@ -23,6 +23,9 @@ Ruby 2.2.x support has been added here https://github.com/topac/tuple
 You have to install [Berkeley DB 5.1.29](http://download.oracle.com/berkeley-db). You can skip the install package and
 extract the file berkeley_db_5.1.29_include.zip into C:\DevKit\local. Then install the gem provided here.
 
+* **sqlite3-1.3.10**  
+Support for ruby 2.2.1 on mingw is missing yet
+
 # DevKit
 
 if you need to add/compile/update gems, download and install the DevKit with the command

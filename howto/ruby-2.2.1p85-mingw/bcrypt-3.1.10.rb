@@ -6,6 +6,8 @@ def test_bcrypt
 end
 
 def manually_install_bcrypt
+  system "gem uninstall bcrypt --force"
+
   repo_url = "https://github.com/codahale/bcrypt-ruby"
   last_valid_commit = "1f9184a8df2b90fa02d01a32a364eefc9072e1b9"
 

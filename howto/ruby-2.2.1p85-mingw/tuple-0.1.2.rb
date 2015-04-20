@@ -6,6 +6,8 @@ def test_tuple
 end
 
 def manually_install_tuple
+  system "gem uninstall tuple --force"
+
   repo_url = "https://github.com/topac/tuple"
   last_valid_commit = "33f1110ef9a6a7b87b076b2d47f58e2847c46e80"
 

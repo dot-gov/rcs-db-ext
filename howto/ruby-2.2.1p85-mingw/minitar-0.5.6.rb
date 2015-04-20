@@ -6,6 +6,8 @@ def test_minitar
 end
 
 def manually_install_minitar
+  system "gem uninstall minitar --force"
+
   repo_url = "https://github.com/topac/minitar"
   last_valid_commit = "cc093da8b4db624ac83e52d313c619474a91bd16"
 
