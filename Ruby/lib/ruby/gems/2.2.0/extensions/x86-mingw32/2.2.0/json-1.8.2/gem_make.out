@@ -1,0 +1,9 @@
+C:/RCS/rcs-db-ext/Ruby/bin/ruby.exe -r ./siteconf20150417-4304-1r5fove.rb extconf.rb
+creating Makefile
+
+make "DESTDIR=" clean
+
+make "DESTDIR="
+make: Nothing to be done for `all'.
+
+make "DESTDIR=" install

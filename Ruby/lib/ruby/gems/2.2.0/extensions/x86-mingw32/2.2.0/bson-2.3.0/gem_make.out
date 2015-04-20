@@ -1,0 +1,12 @@
+C:/RCS/rcs-db-ext/Ruby/bin/ruby.exe -r ./siteconf20150417-4304-vpgfl.rb extconf.rb
+creating Makefile
+
+make "DESTDIR=" clean
+
+make "DESTDIR="
+generating native-i386-mingw32.def
+compiling native.c
+linking shared-object native.so
+
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 native.so ./.gem.20150417-4304-1cd5grv

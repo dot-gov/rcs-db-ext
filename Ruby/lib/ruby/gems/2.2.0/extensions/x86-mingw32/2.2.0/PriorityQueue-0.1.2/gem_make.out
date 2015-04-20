@@ -1,0 +1,30 @@
+C:/RCS/rcs-db-ext/Ruby/bin/ruby.exe -r ./siteconf20150417-4304-elufw0.rb extconf.rb
+creating Makefile
+
+make "DESTDIR=" clean
+
+make "DESTDIR="
+generating CPriorityQueue-i386-mingw32.def
+compiling priority_queue.c
+priority_queue.c: In function 'priority_node_free_recursively':
+priority_queue.c:80:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+priority_queue.c: In function 'link_nodes':
+priority_queue.c:95:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+priority_queue.c: In function 'assert_pointers_correct':
+priority_queue.c:210:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+priority_queue.c: In function 'consolidate_queue':
+priority_queue.c:235:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+priority_queue.c: In function 'priority_queue_delete_min':
+priority_queue.c:258:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+priority_queue.c: In function 'pq_mark_recursive':
+priority_queue.c:459:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+priority_queue.c: In function 'pq_mark':
+priority_queue.c:472:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+priority_queue.c: In function 'pq_node2dot':
+priority_queue.c:804:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+priority_queue.c: At top level:
+priority_queue.c:207:6: warning: 'assert_pointers_correct' defined but not used [-Wunused-function]
+linking shared-object CPriorityQueue.so
+
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 CPriorityQueue.so ./.gem.20150417-4304-d6y04z

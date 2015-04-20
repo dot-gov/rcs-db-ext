@@ -1,6 +1,6 @@
 @ECHO OFF
 IF NOT "%~f0" == "~f0" GOTO :WinNT
-ECHO.This version of Ruby has not been built with support for Windows 95/98/Me.
+@"C:\RCS\rcs-db-ext\Ruby\bin\ruby.exe" "C:/RCS/rcs-db-ext/Ruby/bin/rdoc" %1 %2 %3 %4 %5 %6 %7 %8 %9
 GOTO :EOF
 :WinNT
-@"%~dp0ruby.exe" "%~dpn0" %*
+@"C:\RCS\rcs-db-ext\Ruby\bin\ruby.exe" "%~dpn0" %*

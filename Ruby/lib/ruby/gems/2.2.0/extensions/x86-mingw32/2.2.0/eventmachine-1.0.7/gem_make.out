@@ -1,0 +1,18 @@
+C:/RCS/rcs-db-ext/Ruby/bin/ruby.exe -r ./siteconf20150417-4304-samvul.rb extconf.rb
+checking for windows.h... yes
+checking for winsock.h... yes
+checking for main() in -lkernel32... yes
+checking for main() in -lrpcrt4... yes
+checking for main() in -lgdi32... yes
+creating Makefile
+
+make "DESTDIR=" clean
+
+make "DESTDIR="
+generating fastfilereaderext-i386-mingw32.def
+compiling mapper.cpp
+compiling rubymain.cpp
+linking shared-object fastfilereaderext.so
+
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 fastfilereaderext.so ./.gem.20150417-4304-8kcix1

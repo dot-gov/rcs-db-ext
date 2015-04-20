@@ -1,0 +1,28 @@
+C:/RCS/rcs-db-ext/Ruby/bin/ruby.exe -r ./siteconf20150417-316-1befe8j.rb extconf.rb
+checking for db_version() in -ldb-5.3... no
+checking for db_version() in -ldb-5.1... yes
+checking for db_version() in -ldb-5.0... no
+checking for db_version() in -ldb-4.9... no
+checking for db_version() in -ldb-4.8... no
+checking for db_version() in -ldb-4.7... no
+checking for db_version() in -ldb-4.6... no
+checking for db_version() in -ldb-4.5... no
+checking for db_version() in -ldb-4.4... no
+checking for db_version() in -ldb-4.3... no
+checking for db_version() in -ldb-4.2... no
+Writing bdb_aux._c (defines), this takes a while
+don't know how to handle DB_DEGREE_2 DB_READ_COMMITTED, guessing UINT
+don't know how to handle DB_DIRTY_READ DB_READ_UNCOMMITTED, guessing UINT
+
+wrote 464 defines
+creating Makefile
+
+make "DESTDIR=" clean
+
+make "DESTDIR="
+generating bdb-i386-mingw32.def
+compiling bdb.c
+linking shared-object bdb.so
+
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 bdb.so ./.gem.20150417-316-r8ibgi

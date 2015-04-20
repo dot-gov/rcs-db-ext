@@ -139,7 +139,7 @@ Libraries called "builtin libraries" and "standard libraries" are bundled with R
 And you can obtain more libraries via the package management system called `RubyGems'.
 
 Moreover there are thousands of Ruby projects on GitHub
-<\fBhttps://github.com/languages/Ruby\fR>.
+<\fIhttps://github.com/languages/Ruby\fP.>
 
 .SH OPTIONS
 Ruby interpreter accepts following command-line options (switches).
@@ -552,28 +552,150 @@ Ruby refers to the
 .IR PATH
 environment variable on calling Kernel#system.
 
-.TP
-.B RUBYLIB_PREFIX
-This variable is obsolete.
-
 And Ruby depends on some RubyGems related environment variables unless RubyGems is disabled.
 See the help of
 \fBgem\fP(1)
-as bellow.
+as below.
 
 % gem help
 .br
 
+.SH GC ENVIRONMENT
+The Ruby garbage collector (GC) tracks objects in fixed-sized slots,
+but each object may have auxillary memory allocations handled by the
+malloc family of C standard library calls (
+\fBmalloc\fP(3),
+\fBcalloc\fP(3),
+and
+\fBrealloc\fP(3))
+In this documentatation, the "heap" refers to the Ruby object heap
+of fixed-sized slots, while "malloc" refers to auxillary
+allocations commonly referred to as the "process heap".
+Thus there are at least two possible ways to trigger GC:
+.TP
+.B 1
+Reaching the object limit.
+.TP
+.B 2
+Reaching the malloc limit.
+
+In Ruby 2.1, the generational GC was introduced and the limits are divided
+into young and old generations, providing two additional ways to trigger
+a GC:
+.TP
+.B 3
+Reaching the old object limit.
+.TP
+.B 4
+Reaching the old malloc limit.
+
+There are currently 4 possible areas where the GC may be tuned by
+the the following 11 environment variables:
+.TP
+.B RUBY_GC_HEAP_INIT_SLOTS
+Initial allocation slots.  Introduced in Ruby 2.1, default: 10000.
+
+.TP
+.B RUBY_GC_HEAP_FREE_SLOTS
+Prepare at least this amount of slots after GC.
+Allocate this number slots if there are not enough slots.
+Introduced in Ruby 2.1, default: 4096
+
+.TP
+.B RUBY_GC_HEAP_GROWTH_FACTOR
+Increase allocation rate of heap slots by this factor.
+Introduced in Ruby 2.1, default: 1.8, minimum: 1.0 (no growth)
+
+.TP
+.B RUBY_GC_HEAP_GROWTH_MAX_SLOTS
+Allocation rate is limited to this number of slots,
+preventing excessive allocation due to RUBY_GC_HEAP_GROWTH_FACTOR.
+Introduced in Ruby 2.1, default: 0 (no limit)
+
+.TP
+.B RUBY_GC_HEAP_OLDOBJECT_LIMIT_FACTOR
+Perform a full GC when the number of old objects is more than R * N,
+where R is this factor and N is the number of old objects after the
+last full GC.
+Introduced in Ruby 2.1.1, default: 2.0
+
+.TP
+.B RUBY_GC_MALLOC_LIMIT
+The initial limit of young generation allocation from the malloc-family.
+GC will start when this limit is reached.
+Default: 16MB
+
+.TP
+.B RUBY_GC_MALLOC_LIMIT_MAX
+The maximum limit of young generation allocation from malloc before GC starts.
+Prevents excessive malloc growth due to RUBY_GC_MALLOC_LIMIT_GROWTH_FACTOR.
+Introduced in Ruby 2.1, default: 32MB.
+
+.TP
+.B RUBY_GC_MALLOC_LIMIT_GROWTH_FACTOR
+Increases the limit of young generation malloc calls, reducing
+GC frequency but increasing malloc growth until RUBY_GC_MALLOC_LIMIT_MAX
+is reached.
+Introduced in Ruby 2.1, default: 1.4, minimum: 1.0 (no growth)
+
+.TP
+.B RUBY_GC_OLDMALLOC_LIMIT
+The initial limit of old generation allocation from malloc,
+a full GC will start when this limit is reached.
+Introduced in Ruby 2.1, default: 16MB
+
+.TP
+.B RUBY_GC_OLDMALLOC_LIMIT_MAX
+The maximum limit of old generation allocation from malloc before a
+full GC starts.
+Prevents excessive malloc growth due to RUBY_GC_OLDMALLOC_LIMIT_GROWTH_FACTOR.
+Introduced in Ruby 2.1, default: 128MB
+
+.TP
+.B RUBY_GC_OLDMALLOC_LIMIT_GROWTH_FACTOR
+Increases the limit of old generation malloc allocation, reducing full
+GC frequency but increasing malloc growth until RUBY_GC_OLDMALLOC_LIMIT_MAX
+is reached.
+Introduced in Ruby 2.1, default: 1.2, minimum: 1.0 (no growth)
+
+.SH STACK SIZE ENVIRONMENT
+Stack size environment variables are implementation-dependent and
+subject to change with different versions of Ruby.  The VM stack is used
+for pure-Ruby code and managed by the virtual machine.  Machine stack is
+used by the operating system and its usage is dependent on C extensions
+as well as C compiler options.  Using lower values for these may allow
+applications to keep more Fibers or Threads running; but increases the
+chance of SystemStackError exceptions and segmentation faults (SIGSEGV).
+These environment variables are available since Ruby 2.0.0.
+All values are specified in bytes.
+
+.TP
+.B RUBY_THREAD_VM_STACK_SIZE
+VM stack size used at thread creation.
+default: 131072 (32-bit CPU) or 262144 (64-bit)
+
+.TP
+.B RUBY_THREAD_MACHINE_STACK_SIZE
+Machine stack size used at thread creation.
+default: 524288 or 1048575
+
+.TP
+.B RUBY_FIBER_VM_STACK_SIZE
+VM stack size used at fiber creation.
+default: 65536 or 131072
+
+.TP
+.B RUBY_FIBER_MACHINE_STACK_SIZE
+Machine stack size used at fiber creation.
+default: 262144 or 524288
+
 .SH SEE ALSO
 .TP
-http://www.ruby-lang.org
+https://www.ruby-lang.org/
 The official web site.
 .TP
-http://www.rubyforge.org
-hosting many open source ruby projects.
-.TP
-http://raa.ruby-lang.org
-Ruby Application Archive.
+https://www.ruby-toolbox.com/
+Comprehensive catalog of Ruby libraries.
 
 .SH REPORTING BUGS
 Security vulnerabilities should be reported via an email to
@@ -581,11 +703,13 @@ Security vulnerabilities should be reported via an email to
 Reported problems will be published after they've been fixed.
 
 And you can report other bugs and feature requests via the
-Ruby Issue Tracking System (http://bugs.ruby-lang.org).
+Ruby Issue Tracking System (https://bugs.ruby-lang.org/).
 Do not report security vulnerabilities
 via the system because it publishes the vulnerabilities immediately.
 .SH AUTHORS
 Ruby is designed and implemented by
 Yukihiro Matsumoto <matz@netlab.jp>.
 
-See <\fBhttp://bugs.ruby-lang.org/wiki/ruby/Contributors\fR> for contributors to Ruby.
+See
+<\fIhttps://bugs.ruby-lang.org/projects/ruby/wiki/Contributors\fP>
+for contributors to Ruby.
