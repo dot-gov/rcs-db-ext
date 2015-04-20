@@ -8,7 +8,7 @@ External libraries, huge binaries, all the big, heavy things on which _rcs_ depe
 * Pyhton
 * Ruby
 * nsis
-
+* nowto - A must read guide on how to setup your Windows vm machine. Check out the notes for [ruby-2.2.1p85-mingw](howto/ruby-2.2.1p85-mingw/readme.md)
 
 ## Add --force the Ruby folder!
 Some folders under Ruby contains `.gitignore` files. To avoid losing files when adding
