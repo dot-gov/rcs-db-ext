@@ -57,6 +57,10 @@ safe_system "ruby patch-ffi-1.9.8.rb"
 
 safe_system "ruby bcrypt-3.1.10.rb"
 
+# wbxml
+
+safe_system "ruby wbxml-0.0.1.rb"
+
 # clean
 
 safe_system "gem clean"
