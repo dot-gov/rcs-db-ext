@@ -1,5 +1,6 @@
 require 'resolv'
 require 'timeout'
+require 'socket'
 
 module RCS
   module Resolver
@@ -7,8 +8,21 @@ module RCS
       @@dns_cache ||= {}
     end
 
+    def local_ipv4_addresses
+      @local_ipv4_addresses ||= begin
+        list = ["127.0.0.1"]
+
+        Socket.ip_address_list.each do |addr|
+          list << addr.ip_address if addr.ipv4?
+        end
+
+        list.uniq!
+        list
+      end
+    end
+
     def resolve_to_localhost?(name, options = {})
-      if name == 'localhost' or name == '127.0.0.1'
+      if name == 'localhost' or name == '127.0.0.1' or name == Socket.gethostname or local_ipv4_addresses.include?(name)
         return true
       else
         address = resolve_dns(name, options) rescue nil

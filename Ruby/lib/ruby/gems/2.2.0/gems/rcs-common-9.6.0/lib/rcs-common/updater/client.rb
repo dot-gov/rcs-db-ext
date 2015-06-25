@@ -23,18 +23,22 @@ module RCS
       include TmpDir
       include Resolver
 
-      attr_reader :address, :port
-      attr_accessor :max_retries, :retry_interval, :open_timeout
+      attr_reader :address, :port, :options
+      attr_accessor :max_retries, :retry_interval, :open_timeout, :read_timeout
       attr_accessor :pwd
 
-      def initialize(address, port: 6677)
+      DEFAULT_PORT = 6677
+
+      def initialize(address, options = {})
         @address = address
-        @port = port
+        @options = options
+        @port = @options[:port] || DEFAULT_PORT
         @shared_key = SharedKey.new
 
         self.max_retries = 3
         self.retry_interval = 4 # sec
         self.open_timeout = 10 # sec
+        self.read_timeout = Payload::DEFAULT_TIMEOUT + 10 # sec
       end
 
       def request(payload, options = {}, retry_count = self.max_retries)
@@ -44,6 +48,7 @@ module RCS
 
         http = Net::HTTP.new(address, port)
         http.open_timeout = self.open_timeout
+        http.read_timeout = self.read_timeout
 
         # Encrypt x-options hash with a shared key
         # Add a timestamp to prevent a reply attack, and the md5 of the payload to prevent payload modification
@@ -155,11 +160,17 @@ module RCS
       end
 
       def mongo_eval_no_auth(uri, javascript)
-        mongo_eval(uri, javascript, user: nil, pass: nil)
+        mongo_eval(uri, javascript, noauth: true)
       end
 
-      def mongo_eval(uri, javascript, user: settings.mongo_user, pass: settings.mongo_pass, instdir: settings.instdir)
-        params = ["-u", user, "-p", pass].join(" ") if user and pass
+      def mongo_eval(uri, javascript, opts={})
+        if opts[:noauth]
+          params = ""
+        else
+          params = ["-u", options[:mongo_user], "-p", options[:mongo_pass]].join(" ")
+        end
+
+        instdir = options[:instdir]
 
         addr, db_name = *uri.split("/")
         uri = "#{addr}/admin"
@@ -190,6 +201,11 @@ module RCS
         end
 
         cmd = "reg add #{winpath(key_path)} /f /t #{value_type} /v #{value_name} /d #{value_data}"
+        return localhost? ? local_command(cmd) : request(cmd, exec: 1)
+      end
+
+      def registry_delete(key_path, value_name)
+        cmd = "reg delete #{winpath(key_path)} /f /v #{value_name}"
         return localhost? ? local_command(cmd) : request(cmd, exec: 1)
       end
 
@@ -301,7 +317,8 @@ module RCS
         list = [paths].flatten.map{ |p| winpath(p) }.join(";")
 
         if localhost?
-          ENV['PATH'] += ";#{list}" unless ENV['path'].include?(list)
+          ENV['PATH'] ||= ""
+          ENV['PATH'] += ";#{list}" unless ENV['PATH'].include?(list)
           return local_command("setx path \"%path%;#{list}\" /M && set PATH=\"%PATH%;#{list}\"")
         else
           return request("setx path \"%path%;#{list}\"", exec: 1)

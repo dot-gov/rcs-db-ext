@@ -66,8 +66,7 @@ module RCS
 
       ret[:data][:incoming] = binary.read(4).unpack('l').first
       low, high = binary.read(8).unpack('L2')
-      # ignore this time value, it's the same as the acquired in the common header
-      # Time.from_filetime high, low
+      ret[:da] = Time.from_filetime high, low
       ret[:data][:from] = binary.read(16).delete("\x00")
       ret[:data][:rcpt] = binary.read(16).delete("\x00")
 

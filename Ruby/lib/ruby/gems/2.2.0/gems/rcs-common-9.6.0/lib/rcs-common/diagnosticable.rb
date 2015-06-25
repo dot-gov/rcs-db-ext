@@ -1,3 +1,4 @@
+require 'open3'
 require 'sys/filesystem'
 require 'rcs-common/fixnum'
 
@@ -56,6 +57,26 @@ module RCS
       list
     end
 
+    MAX_LOG_SIZE = 25_000_000
+
+    def huge_log?(path)
+      File.size(path) > MAX_LOG_SIZE
+    end
+
+    def read_log_file(path)
+      if huge_log?(path)
+        file = File.open(path, "rb")
+        file.seek(-1 * MAX_LOG_SIZE, IO::SEEK_END)
+        content = "#{'*'*40}\nFile too big. The following are the last #{MAX_LOG_SIZE} bytes\n#{'*'*40}\n\n".force_encoding("BINARY")
+        content << file.read
+        file.close
+
+        return content
+      else
+        return File.read(path)
+      end
+    end
+
     def windows?
       RbConfig::CONFIG['host_os'] =~ /mingw/
     end
@@ -68,8 +89,8 @@ module RCS
 
     def command_output(name)
       cmd = (name =~ /rcs\-/) ? "ruby #{execution_directory}/bin/#{name}" : name
-      output = `#{cmd}`
-      "Output of command #{name}\n#{output}\n\n"
+      stdout_and_stderr_str, status = Open3.capture2e(cmd)
+      "Output of command #{name}\n#{stdout_and_stderr_str}\n\n"
     end
 
     def config_files
@@ -117,10 +138,6 @@ module RCS
       end
 
       return "#{states}\n#{config}"
-    end
-
-    def huge_log?(path)
-      File.size(path) > 52428800 # 50 megabytes
     end
 
     def hide_addresses(string)

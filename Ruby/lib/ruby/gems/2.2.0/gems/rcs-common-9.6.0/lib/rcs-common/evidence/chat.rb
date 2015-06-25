@@ -22,6 +22,7 @@ module Chat
       0x0e => :telegram,
       0x0f => :yahoo,
       0x10 => :messages,
+      0x12 => :hangouts,
   }
 
   CHAT_INCOMING = 0x00000001

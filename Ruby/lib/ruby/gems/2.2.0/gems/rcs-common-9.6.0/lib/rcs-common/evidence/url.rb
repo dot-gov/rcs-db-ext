@@ -8,7 +8,7 @@ module UrlEvidence
 
   VERSION_DELIMITER = 0x20100713
   ELEM_DELIMITER = 0xABADC0DE
-  BROWSER_TYPE = ['Unknown', 'Internet Explorer', 'Firefox', 'Opera', 'Safari', 'Chrome', 'Mobile Safari', 'Browser', 'Web']
+  BROWSER_TYPE = ['Unknown', 'Internet Explorer', 'Firefox', 'Opera', 'Safari', 'Chrome', 'Mobile Safari', 'Browser', 'Web', 'Edge']
 
   def decode_query(url)
     query = []

@@ -189,6 +189,9 @@ EOF
 
     #trace :debug, "MAIL: body: #{info[:data][:body]}"
 
+    # were we able to detect attachments in the parse_multipart decoding?
+    info[:data][:attach] = body[:attachments] if body[:attachments] != 0
+    # check if the mail lib was able to detect attachments
     info[:data][:attach] = m.attachments.length if m.attachments.length > 0
 
     date = m.date.to_time unless m.date.nil?
@@ -205,8 +208,10 @@ EOF
 
   def parse_multipart(parts)
     content_types = parts.map { |p| p.content_type.split(';')[0] }
-    body = {}
+    body = {attachments: 0}
     content_types.each_with_index do |ct, i|
+      # fix for "strange" attachments
+      body[:attachments] += 1 if parts[i].header_fields.first.value =~ /Content-Disposition: attachment/i
       if parts[i].multipart?
         body = parse_multipart(parts[i].parts)
       else

@@ -1,0 +1,70 @@
+C:/RCS/rcs-db-ext/Ruby/bin/ruby.exe -r ./siteconf20150513-2456-5chmxc.rb extconf.rb
+checking for OS... mingw
+creating Makefile
+
+make "DESTDIR=" clean
+
+make "DESTDIR="
+generating serialport-i386-mingw32.def
+compiling posix_serialport_impl.c
+compiling serialport.c
+compiling win_serialport_impl.c
+win_serialport_impl.c: In function '_rb_win32_fail':
+win_serialport_impl.c:59:3: warning: format '%d' expects argument of type 'int', but argument 4 has type 'DWORD' [-Wformat]
+win_serialport_impl.c: In function 'sp_create_impl':
+win_serialport_impl.c:80:4: warning: passing argument 1 of 'rb_obj_setup' makes integer from pointer without a cast [enabled by default]
+In file included from c:/RCS/rcs-db-ext/Ruby/include/ruby-2.2.0/ruby.h:33:0,
+                 from serialport.h:24,
+                 from win_serialport_impl.c:20:
+c:/RCS/rcs-db-ext/Ruby/include/ruby-2.2.0/ruby/ruby.h:710:7: note: expected 'VALUE' but argument is of type 'struct RFile *'
+win_serialport_impl.c: At top level:
+win_serialport_impl.c:622:0: warning: "PURGE_RXABORT" redefined [enabled by default]
+In file included from c:\devkit\mingw\bin\../lib/gcc/i686-w64-mingw32/4.7.2/../../../../i686-w64-mingw32/include/windows.h:60:0,
+                 from c:\devkit\mingw\bin\../lib/gcc/i686-w64-mingw32/4.7.2/../../../../i686-w64-mingw32/include/winsock2.h:23,
+                 from c:/RCS/rcs-db-ext/Ruby/include/ruby-2.2.0/ruby/win32.h:38,
+                 from c:/RCS/rcs-db-ext/Ruby/include/ruby-2.2.0/ruby/defines.h:163,
+                 from c:/RCS/rcs-db-ext/Ruby/include/ruby-2.2.0/ruby/ruby.h:29,
+                 from c:/RCS/rcs-db-ext/Ruby/include/ruby-2.2.0/ruby.h:33,
+                 from serialport.h:24,
+                 from win_serialport_impl.c:20:
+c:\devkit\mingw\bin\../lib/gcc/i686-w64-mingw32/4.7.2/../../../../i686-w64-mingw32/include/winbase.h:691:0: note: this is the location of the previous definition
+win_serialport_impl.c:623:0: warning: "PURGE_RXCLEAR" redefined [enabled by default]
+In file included from c:\devkit\mingw\bin\../lib/gcc/i686-w64-mingw32/4.7.2/../../../../i686-w64-mingw32/include/windows.h:60:0,
+                 from c:\devkit\mingw\bin\../lib/gcc/i686-w64-mingw32/4.7.2/../../../../i686-w64-mingw32/include/winsock2.h:23,
+                 from c:/RCS/rcs-db-ext/Ruby/include/ruby-2.2.0/ruby/win32.h:38,
+                 from c:/RCS/rcs-db-ext/Ruby/include/ruby-2.2.0/ruby/defines.h:163,
+                 from c:/RCS/rcs-db-ext/Ruby/include/ruby-2.2.0/ruby/ruby.h:29,
+                 from c:/RCS/rcs-db-ext/Ruby/include/ruby-2.2.0/ruby.h:33,
+                 from serialport.h:24,
+                 from win_serialport_impl.c:20:
+c:\devkit\mingw\bin\../lib/gcc/i686-w64-mingw32/4.7.2/../../../../i686-w64-mingw32/include/winbase.h:693:0: note: this is the location of the previous definition
+win_serialport_impl.c:639:0: warning: "PURGE_TXABORT" redefined [enabled by default]
+In file included from c:\devkit\mingw\bin\../lib/gcc/i686-w64-mingw32/4.7.2/../../../../i686-w64-mingw32/include/windows.h:60:0,
+                 from c:\devkit\mingw\bin\../lib/gcc/i686-w64-mingw32/4.7.2/../../../../i686-w64-mingw32/include/winsock2.h:23,
+                 from c:/RCS/rcs-db-ext/Ruby/include/ruby-2.2.0/ruby/win32.h:38,
+                 from c:/RCS/rcs-db-ext/Ruby/include/ruby-2.2.0/ruby/defines.h:163,
+                 from c:/RCS/rcs-db-ext/Ruby/include/ruby-2.2.0/ruby/ruby.h:29,
+                 from c:/RCS/rcs-db-ext/Ruby/include/ruby-2.2.0/ruby.h:33,
+                 from serialport.h:24,
+                 from win_serialport_impl.c:20:
+c:\devkit\mingw\bin\../lib/gcc/i686-w64-mingw32/4.7.2/../../../../i686-w64-mingw32/include/winbase.h:690:0: note: this is the location of the previous definition
+win_serialport_impl.c:640:0: warning: "PURGE_TXCLEAR" redefined [enabled by default]
+In file included from c:\devkit\mingw\bin\../lib/gcc/i686-w64-mingw32/4.7.2/../../../../i686-w64-mingw32/include/windows.h:60:0,
+                 from c:\devkit\mingw\bin\../lib/gcc/i686-w64-mingw32/4.7.2/../../../../i686-w64-mingw32/include/winsock2.h:23,
+                 from c:/RCS/rcs-db-ext/Ruby/include/ruby-2.2.0/ruby/win32.h:38,
+                 from c:/RCS/rcs-db-ext/Ruby/include/ruby-2.2.0/ruby/defines.h:163,
+                 from c:/RCS/rcs-db-ext/Ruby/include/ruby-2.2.0/ruby/ruby.h:29,
+                 from c:/RCS/rcs-db-ext/Ruby/include/ruby-2.2.0/ruby.h:33,
+                 from serialport.h:24,
+                 from win_serialport_impl.c:20:
+c:\devkit\mingw\bin\../lib/gcc/i686-w64-mingw32/4.7.2/../../../../i686-w64-mingw32/include/winbase.h:692:0: note: this is the location of the previous definition
+win_serialport_impl.c: In function 'sp_create_impl':
+win_serialport_impl.c:79:4: warning: call to 'ruby_safe_level_4_warning' declared with attribute warning: $SAFE=4 is obsolete [enabled by default]
+win_serialport_impl.c: In function 'sp_set_modem_params_impl':
+win_serialport_impl.c:242:4: warning: '_stop_bits' may be used uninitialized in this function [-Wmaybe-uninitialized]
+win_serialport_impl.c:167:34: warning: '_parity' may be used uninitialized in this function [-Wmaybe-uninitialized]
+win_serialport_impl.c:218:4: warning: '_data_bits' may be used uninitialized in this function [-Wmaybe-uninitialized]
+linking shared-object serialport.so
+
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 serialport.so ./.gem.20150513-2456-1dvm1jk

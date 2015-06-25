@@ -4,7 +4,13 @@ module RCS
 
 module DeviceEvidence
   def content
-    "The time is #{Time.now} and everything is ok... till now".to_utf16le_binary
+    cnt = "The time is #{Time.now} and everything is ok... till now"
+
+    if pn = ["SIM not present", "unknown", "+12345678", nil].sample
+      cnt << "\nPhoneNumber: #{pn}"
+    end
+
+    return cnt.to_utf16le_binary
   end
 
   def generate_content

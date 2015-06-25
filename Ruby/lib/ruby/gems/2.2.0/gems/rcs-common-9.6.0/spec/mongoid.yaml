@@ -1,6 +1,12 @@
 spec:
   sessions:
     default:
+      max_retries: 1
+      retry_interval: 0
       database: rcs-test
+      username: test-user
+      password: test-password
       hosts:
-        - localhost:27017
+        - 127.0.0.1:27017
+      options:
+        pool_size: 5

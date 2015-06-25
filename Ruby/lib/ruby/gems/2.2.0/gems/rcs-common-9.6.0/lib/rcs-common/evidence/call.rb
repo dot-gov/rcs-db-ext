@@ -17,6 +17,9 @@ module CallEvidence
                    0x0148 => :viber,
                    0x0149 => :wechat,
                    0x014a => :line,
+                   0x014b => :whatsapp,
+                   0x014c => :facebook,
+                   0x014d => :hangouts,
                  }
   
   def decode_additional_header(data)

@@ -1,0 +1,22 @@
+C:/RCS/rcs-db-ext/Ruby/bin/ruby.exe -r ./siteconf20150625-3660-1ot9aw0.rb extconf.rb
+creating Makefile
+
+make "DESTDIR=" clean
+
+make "DESTDIR="
+generating tuple-i386-mingw32.def
+compiling tuple.c
+tuple.c: In function 'tuple_parse':
+tuple.c:199:19: warning: pointer of type 'void *' used in arithmetic [-Wpointer-arith]
+tuple.c:199:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+tuple.c:207:9: warning: pointer of type 'void *' used in arithmetic [-Wpointer-arith]
+tuple.c:231:13: warning: pointer of type 'void *' used in arithmetic [-Wpointer-arith]
+tuple.c:241:39: warning: pointer of type 'void *' used in arithmetic [-Wpointer-arith]
+tuple.c:249:39: warning: pointer of type 'void *' used in arithmetic [-Wpointer-arith]
+tuple.c:252:36: warning: pointer of type 'void *' used in subtraction [-Wpointer-arith]
+tuple.c: In function 'tuple_load':
+tuple.c:274:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+linking shared-object tuple/tuple.so
+
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 tuple.so ./.gem.20150625-3660-qvgrbj/tuple

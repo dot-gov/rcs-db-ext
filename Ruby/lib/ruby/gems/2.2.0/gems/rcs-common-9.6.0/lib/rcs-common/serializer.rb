@@ -290,7 +290,8 @@ module RCS
         0x0e => :telegram,
         0x0f => :yahoo,
         0x10 => :messages,
-        0x11 => :contacts
+        0x11 => :contacts,
+        0x12 => :hangouts,
     }
 
     TYPE_FLAGS = {
